@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { api_redit } from "../api";
 import { MyRedditPosts, Posts } from "../interfaces/RedditIterface";
+import reducer from "../reducer/reducer";
 
 const usePosts = (cat?: string) => {
   const [posts, setPosts] = useState<MyRedditPosts[]>([]);
+  // const [state, dispatch] =  useReducer(reducer, [])
 
   const getPosts = async () => {
     const postsReddit = await axios.get<Posts>(api_redit);
