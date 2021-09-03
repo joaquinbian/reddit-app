@@ -5,6 +5,7 @@ import HomeScreen from "../screens/HomeScreen";
 import UrlScreen from "../screens/UrlScreen";
 
 export type RootStackParams = {
+  Home: undefined;
   Url: { url: string };
 };
 const StackNavigator = () => {
