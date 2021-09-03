@@ -7,23 +7,28 @@ import usePosts from "../hooks/usePosts";
 import { Posts } from "../interfaces/RedditIterface";
 
 const HomeScreen = () => {
-  // const [posts, setPosts] = useState([])
   const { posts } = usePosts();
 
-  const getPosts = async () => {
-    const redditPosts = await axios.get<Posts>(api_redit);
-    // console.log(redditPosts.data.data.children[21].data);
-  };
-  getPosts();
+  // const getPosts = async () => {
+  //   const redditPosts = await axios.get<Posts>(api_redit);
+  // };
+  // getPosts();
   return (
-    <FlatList
-      data={posts}
-      renderItem={({ item }) => <PostCard post={item} />}
-      keyExtractor={(item) => item.created.toString()}
-    />
+    <View style={styles.container}>
+      <FlatList
+        data={posts}
+        renderItem={({ item }) => <PostCard post={item} />}
+        keyExtractor={(item) => item.created.toString()}
+        ItemSeparatorComponent={() => <View style={{ marginBottom: 5 }} />}
+      />
+    </View>
   );
 };
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 5,
+  },
+});

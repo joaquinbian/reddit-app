@@ -18,7 +18,7 @@ const usePosts = (cat?: string) => {
         image: p.data.thumbnail,
         comments: p.data.num_comments,
         score: p.data.score,
-        created: p.data.created_utc,
+        created: p.data.created,
         upVotes: p.data.ups,
         totalVotes: p.data.ups + p.data.downs,
         url: p.data.url,
