@@ -33,9 +33,9 @@ const HomeScreen = ({ route, navigation }: Props) => {
     setRefreshing(false);
   };
   useEffect(() => {
-    //ejecucion de la funcion cuando se hace el mount
+    //ejecucion de la funcion cuando se hace el mount,
+    //esta funcion ya hace el sort dependiendo de la ruta en la que esté
     setPosts();
-    // console.log("hola");
   }, []);
 
   return (

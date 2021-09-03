@@ -1,5 +1,10 @@
 import { MyRedditPosts } from "../interfaces/RedditIterface";
-import { sortNew, sortTop, sortControversial } from "../helpers/sortList";
+import {
+  sortNew,
+  sortTop,
+  sortControversial,
+  sortHot,
+} from "../helpers/sortList";
 
 type actionsType =
   | { type: "getAll"; payload: MyRedditPosts[] }
@@ -25,6 +30,8 @@ const reducer = (state: initState, action: actionsType): initState => {
       return { ...state, posts: posts.sort(sortTop) };
     case "Controversial":
       return { ...state, posts: posts.sort(sortControversial) };
+    case "Hot":
+      return { ...state, posts: posts.sort(sortHot) };
     case "loading":
       return { ...state, isLoading: !isLoading };
     default:

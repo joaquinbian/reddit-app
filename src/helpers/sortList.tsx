@@ -43,3 +43,12 @@ export const sortControversial = (a: MyRedditPosts, b: MyRedditPosts) => {
   if (b.downVotes - a.upVotes <= 5 && b.upVotes + a.downVotes >= 10) return 1;
   return 0;
 };
+
+export const sortHot = (a: MyRedditPosts, b: MyRedditPosts) => {
+  // const dateA = Number(new Date(a.created * 1000));
+  // const dateB = Number(new Date(b.created * 1000));
+
+  if (a.created > b.created && a.upVotes > b.upVotes) return -1;
+  if (b.created - a.created && b.upVotes > a.upVotes) return 1;
+  return 0;
+};

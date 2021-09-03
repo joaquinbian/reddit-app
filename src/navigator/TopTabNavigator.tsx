@@ -8,6 +8,7 @@ const TopTabNavigator = () => {
       <TopTabNavigator.Screen name="New" component={HomeScreen} />
       <TopTabNavigator.Screen name="Top" component={HomeScreen} />
       <TopTabNavigator.Screen name="Controversial" component={HomeScreen} />
+      <TopTabNavigator.Screen name="Hot" component={HomeScreen} />
     </TopTabNavigator.Navigator>
   );
 };
