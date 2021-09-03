@@ -1,22 +1,31 @@
-import axios from "axios";
-import React from "react";
+import { MaterialTopTabScreenProps } from "@react-navigation/material-top-tabs";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import { api_redit } from "../api";
 import PostCard from "../components/PostCard";
 import usePosts from "../hooks/usePosts";
-import { Posts } from "../interfaces/RedditIterface";
+import { sortNew } from "../helpers/sortList";
 
-const HomeScreen = () => {
+//interfaz para obtener las propiedades de navigation (navigation, route...)
+interface Props extends MaterialTopTabScreenProps<any, any> {}
+
+const HomeScreen = ({ route, navigation }: Props) => {
   const { posts } = usePosts();
 
-  // const getPosts = async () => {
-  //   const redditPosts = await axios.get<Posts>(api_redit);
-  // };
-  // getPosts();
+  useEffect(() => {
+    // agrego un listener que ejecute el filtrado cuando se haga navegue
+    // a x pantalla obteniendo el route.name, y en base a eso filtro
+
+    const onFocus = navigation.addListener("focus", () => {
+      console.log(route.name);
+    });
+
+    return onFocus;
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={posts}
+        data={posts.sort(sortNew)}
         renderItem={({ item }) => <PostCard post={item} />}
         keyExtractor={(item) => item.created.toString()}
         ItemSeparatorComponent={() => <View style={{ marginBottom: 5 }} />}

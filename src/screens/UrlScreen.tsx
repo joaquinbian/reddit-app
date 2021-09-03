@@ -7,7 +7,6 @@ import { RootStackParams } from "../navigator/StackNavigator";
 interface Props extends StackScreenProps<RootStackParams, "Url"> {}
 const UrlScreen = ({ route }: Props) => {
   const { url } = route.params;
-  console.log(url);
 
   return (
     <View style={{ flex: 1 }}>

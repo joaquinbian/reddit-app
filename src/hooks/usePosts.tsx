@@ -9,7 +9,6 @@ const usePosts = (cat?: string) => {
   const getPosts = async () => {
     const postsReddit = await axios.get<Posts>(api_redit);
     const arrPosts = postsReddit.data.data.children;
-    console.log(arrPosts.length);
 
     const arrMyPosts: MyRedditPosts[] = arrPosts.map((p) => {
       return {
@@ -26,7 +25,6 @@ const usePosts = (cat?: string) => {
     });
 
     setPosts(arrMyPosts);
-    // setPosts([...arrMyPosts]);
   };
 
   useEffect(() => {

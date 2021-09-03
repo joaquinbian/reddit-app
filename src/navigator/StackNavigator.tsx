@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import UrlScreen from "../screens/UrlScreen";
+import TopTabNavigator from "./TopTabNavigator";
 
 export type RootStackParams = {
   Home: undefined;
@@ -12,7 +13,7 @@ const StackNavigator = () => {
   const Stack = createStackNavigator<RootStackParams>();
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={TopTabNavigator} />
       <Stack.Screen name="Url" component={UrlScreen} />
     </Stack.Navigator>
   );
