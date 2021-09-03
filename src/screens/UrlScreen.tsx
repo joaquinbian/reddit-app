@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
 import WebView from "react-native-webview";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParams } from "../navigator/StackNavigator";
@@ -16,5 +16,3 @@ const UrlScreen = ({ route }: Props) => {
 };
 
 export default UrlScreen;
-
-const styles = StyleSheet.create({});

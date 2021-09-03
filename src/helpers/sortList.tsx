@@ -15,7 +15,7 @@ export const PostsToMyPosts = (arr: Posts): MyRedditPosts[] => {
       score: p.data.score,
       created: p.data.created,
       upVotes: p.data.ups,
-      totalVotes: p.data.ups + p.data.downs,
+      downVotes: p.data.downs,
       url: p.data.url,
     };
   });
@@ -35,5 +35,11 @@ export const sortNew = (a: MyRedditPosts, b: MyRedditPosts) => {
 export const sortTop = (a: MyRedditPosts, b: MyRedditPosts) => {
   if (a.upVotes > b.upVotes) return -1;
   if (b.upVotes > a.upVotes) return 1;
+  return 0;
+};
+
+export const sortControversial = (a: MyRedditPosts, b: MyRedditPosts) => {
+  if (a.downVotes - b.upVotes <= 5 && a.upVotes + b.downVotes >= 10) return -1;
+  if (b.downVotes - a.upVotes <= 5 && b.upVotes + a.downVotes >= 10) return 1;
   return 0;
 };

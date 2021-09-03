@@ -21,7 +21,7 @@ const usePosts = (cat?: string) => {
         score: p.data.score,
         created: p.data.created,
         upVotes: p.data.ups,
-        totalVotes: p.data.ups + p.data.downs,
+        downVotes: p.data.downs,
         url: p.data.url,
       };
     });

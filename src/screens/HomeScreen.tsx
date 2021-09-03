@@ -4,7 +4,7 @@ import { StyleSheet, View, FlatList } from "react-native";
 import PostCard from "../components/PostCard";
 import usePosts from "../hooks/usePosts";
 import reducer from "../reducer/reducer";
-import { MyRedditPosts, Posts } from "../interfaces/RedditIterface";
+import { Posts } from "../interfaces/RedditIterface";
 import axios from "axios";
 import { api_redit } from "../api";
 import { PostsToMyPosts } from "../helpers/sortList";
@@ -35,19 +35,8 @@ const HomeScreen = ({ route, navigation }: Props) => {
   useEffect(() => {
     //ejecucion de la funcion cuando se hace el mount
     setPosts();
+    // console.log("hola");
   }, []);
-
-  useEffect(() => {
-    // agrego un listener que ejecute el filtrado cuando se haga navegue
-    // a x pantalla obteniendo el route.name, y en base a eso filtro
-
-    const onFocus = navigation.addListener("focus", () => {
-      dispatch({ type: route.name });
-      console.log(route.name);
-    });
-
-    return onFocus;
-  }, [navigation]);
 
   return (
     <View style={styles.container}>

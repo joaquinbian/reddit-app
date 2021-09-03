@@ -13,7 +13,7 @@ export interface MyRedditPosts {
   author: string;
   created: number; //para filtrar por fecha
   upVotes: number; //para filtrar por top
-  totalVotes: number; //upVotes + downVotes para filtrar por controversial
+  downVotes: number; //upVotes + downVotes para filtrar por controversial
   //para fltrar por hot se necesita la fecha y los upvotes
   url: string;
 }
