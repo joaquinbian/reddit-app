@@ -1,9 +1,8 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 import { MyRedditPosts, Posts } from "../interfaces/RedditIterface";
 import { screens } from "../interfaces/dataInterface";
 import reducer from "./reducer";
 import axios from "axios";
-import { api_redit } from "../api";
 import { PostsToMyPosts } from "../helpers/sortList";
 
 interface ProviderProp {

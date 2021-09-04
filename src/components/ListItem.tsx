@@ -1,11 +1,5 @@
 import React, { useContext } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { Text, TouchableOpacity, useWindowDimensions } from "react-native";
 import { Data } from "../interfaces/dataInterface";
 import { dataList } from "../data/data";
 import { appContext } from "../context/context";
@@ -17,17 +11,9 @@ interface Props {
 const ListItem = ({ item }: Props) => {
   const { width } = useWindowDimensions();
   const { name } = item;
-  const { setSelected, sortPosts, state } = useContext(appContext);
+  const { setSelected, state } = useContext(appContext);
   const { selected } = state;
 
-  //nosotros aca recibimos el nombre, entonces ejecutamos una funcion
-  //que dentro va a ejecutar dos funciones que expone el context:
-  //una para selecionar la pantalla, y la otra para hacer el sort
-
-  const onTouch = () => {
-    setSelected(name);
-    // sortPosts(name);
-  };
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -37,7 +23,9 @@ const ListItem = ({ item }: Props) => {
         justifyContent: "center",
         height: 30,
       }}
-      onPress={onTouch}
+      onPress={() => setSelected(name)} //el name es el nombre de una screen porque asi lo definimos en la
+      //interface de Data, entonces cuando se selecciona, se ejecuta el efecto de homescreen que hace el
+      //llamado con ese mismo name, y entonces ahi hace la peticion
     >
       <Text style={{ alignSelf: "center" }}>{name}</Text>
     </TouchableOpacity>
@@ -45,5 +33,3 @@ const ListItem = ({ item }: Props) => {
 };
 
 export default ListItem;
-
-const styles = StyleSheet.create({});

@@ -1,5 +1,5 @@
-import { actionsType } from "../context/reducer";
-export type screens = "Hot" | "New" | "Controversial" | "Top";
+export type screens = "Hot" | "New" | "Controversial" | "Top"; //este type conteine todas las screens por las que vamos a filtrar
 export interface Data {
-  name: screens;
+  name: screens; //este objeto va a ser el modelo de cada item de la lista que va a renderizar el navbar, el texto va a ser el name
+  //que a su vez va a ser una pantalla para filtrar luego
 }

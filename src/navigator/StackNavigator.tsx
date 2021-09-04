@@ -3,7 +3,6 @@ import { View, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import UrlScreen from "../screens/UrlScreen";
-import TopTabNavigator from "./TopTabNavigator";
 
 export type RootStackParams = {
   Home: undefined;

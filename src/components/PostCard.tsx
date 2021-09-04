@@ -8,7 +8,7 @@ interface Props {
   post: MyRedditPosts;
 }
 const PostCard = ({ post }: Props) => {
-  const date = new Date(post.created * 1000);
+  const date = new Date(post.created * 1000); //la data viene en epoch. lo pasamos a milisegundos
   const navigation = useNavigation();
 
   return (

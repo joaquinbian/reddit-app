@@ -1,11 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useReducer,
-  useState,
-} from "react";
-import { MaterialTopTabScreenProps } from "@react-navigation/material-top-tabs";
+import React, { useContext, useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -14,12 +7,9 @@ import {
   ActivityIndicator,
 } from "react-native";
 import PostCard from "../components/PostCard";
-
 import { dataList } from "../data/data";
 import ListItem from "../components/ListItem";
 import { appContext } from "../context/context";
-
-//interfaz para obtener las propiedades de navigation (navigation, route...)
 
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,11 +18,13 @@ const HomeScreen = () => {
 
   useEffect(() => {
     getPosts(selected);
-    console.log("entre");
   }, [selected]);
 
   const onRefresh = () => {
-    getPosts(selected);
+    setIsLoading(true);
+    getPosts(selected).then(() => {
+      setIsLoading(false);
+    });
   };
 
   return (
