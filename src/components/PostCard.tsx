@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { MyRedditPosts, Posts } from "../interfaces/RedditIterface";
+import { MyRedditPosts } from "../interfaces/RedditIterface";
 import { relativeDate } from "../helpers/relativeDate";
 
 interface Props {
