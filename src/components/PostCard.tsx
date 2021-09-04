@@ -2,12 +2,13 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MyRedditPosts, Posts } from "../interfaces/RedditIterface";
+import { relativeDate } from "../helpers/relativeDate";
 
 interface Props {
   post: MyRedditPosts;
 }
 const PostCard = ({ post }: Props) => {
-  const date = new Date(post.created * 1000).toLocaleString();
+  const date = new Date(post.created * 1000);
   const navigation = useNavigation();
 
   return (
@@ -27,7 +28,7 @@ const PostCard = ({ post }: Props) => {
         <View
           style={{ flex: 1, marginLeft: 5, justifyContent: "space-evenly" }}
         >
-          <Text style={styles.date}>{date}</Text>
+          <Text style={styles.date}>{relativeDate(Number(date))}</Text>
           <Text style={styles.title}>{post.title}</Text>
           <View style={styles.postInfo}>
             <Text style={styles.textInfo}>{post.author}</Text>
