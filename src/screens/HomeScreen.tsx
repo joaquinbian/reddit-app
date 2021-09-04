@@ -89,7 +89,7 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
     flex: 1,
   },
   loadingView: {
