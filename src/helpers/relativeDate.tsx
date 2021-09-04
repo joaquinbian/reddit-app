@@ -5,7 +5,7 @@ export const relativeDate = (time: number) => {
   const minutes = secondsPast / 60;
 
   if (secondsPast < 60) {
-    return `${secondsPast} seconds ago`;
+    return `${Math.floor(secondsPast)} seconds ago`;
   } else if (secondsPast < 3600) {
     return `${Math.floor(secondsPast / 60)} minutes ago`;
   } else if (secondsPast < 86400) {

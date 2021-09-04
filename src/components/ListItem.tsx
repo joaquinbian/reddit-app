@@ -26,7 +26,7 @@ const ListItem = ({ item }: Props) => {
 
   const onTouch = () => {
     setSelected(name);
-    sortPosts(name);
+    // sortPosts(name);
   };
   return (
     <TouchableOpacity

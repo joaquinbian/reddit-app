@@ -33,22 +33,21 @@ export const sortNew = (a: MyRedditPosts, b: MyRedditPosts) => {
 };
 
 export const sortTop = (a: MyRedditPosts, b: MyRedditPosts) => {
-  if (a.upVotes > b.upVotes) return -1;
-  if (b.upVotes > a.upVotes) return 1;
-  return 0;
+  //la misma logica que arriba, ordena de menor a mayor y en el reduce
+  //le aplicamos el metodo reverse
+  return a.upVotes - b.upVotes;
 };
 
 export const sortControversial = (a: MyRedditPosts, b: MyRedditPosts) => {
-  if (a.downVotes - b.upVotes <= 5 && a.upVotes + b.downVotes >= 10) return -1;
-  if (b.downVotes - a.upVotes <= 5 && b.upVotes + a.downVotes >= 10) return 1;
-  return 0;
-};
+  //controversial es cuando tienen aproximadamente la misma cantidad de
+  //upVotes que de downVotes, por eso resto los upVotes - downVotes
+  // y si la diferencia es pequeña es porque son un numero
+  //similar, entonces es controversial
+  console.log({
+    upVotes: a.upVotes,
+  });
 
-export const sortHot = (a: MyRedditPosts, b: MyRedditPosts) => {
-  const dateA = Number(new Date(a.created * 1000));
-  const dateB = Number(new Date(b.created * 1000));
-
-  if (dateA - dateB && a.upVotes > b.upVotes) return -1;
-  if (dateB - dateA && b.upVotes > a.upVotes) return 1;
+  if (a.upVotes - b.downVotes) return -1;
+  if (b.upVotes - a.downVotes) return 1;
   return 0;
 };
