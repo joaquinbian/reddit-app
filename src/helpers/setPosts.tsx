@@ -1,7 +1,5 @@
 import { MyRedditPosts, Posts } from "../interfaces/RedditIterface";
 
-//creamos las funciones que van a odenar dependiendo de en que pantallas estén
-
 //esta function nos hace un arreglo con los posts pero que solo tienen la data que necestio
 export const PostsToMyPosts = (arr: Posts): MyRedditPosts[] => {
   const arrPosts = arr.data.children;

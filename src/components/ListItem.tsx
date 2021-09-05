@@ -24,8 +24,8 @@ const ListItem = ({ item }: Props) => {
       activeOpacity={0.8}
       style={{
         width: width / dataList.length,
-        ...styles.item,
         backgroundColor: selected === name ? "red" : "transparent",
+        ...styles.item,
       }}
       onPress={() => setSelected(name)} //el name es el nombre de una screen porque asi lo definimos en la
       //interface de Data, entonces cuando se selecciona, se ejecuta el efecto de homescreen que hace el

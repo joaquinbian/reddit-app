@@ -15,7 +15,10 @@ const PostCard = ({ post }: Props) => {
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={() => {
-        navigation.navigate("Url", { url: post.url });
+        navigation.navigate("Url", {
+          url: post.url,
+          title: post.title,
+        });
       }}
       style={{ marginHorizontal: 5 }}
     >
