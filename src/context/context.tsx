@@ -46,7 +46,10 @@ const AppProvider = ({ children }: ProviderProp) => {
       const postsFetched = await axios.get<Posts>(
         `https://api.reddit.com/r/pics/${name.toLowerCase()}.json`
       );
-      dispatch({ type: "getAll", payload: PostsToMyPosts(postsFetched.data) });
+      dispatch({
+        type: "getAll",
+        payload: PostsToMyPosts(postsFetched.data),
+      });
     } catch (err) {
       console.log(err);
     }
