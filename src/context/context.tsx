@@ -3,7 +3,7 @@ import { MyRedditPosts, Posts } from "../interfaces/RedditIterface";
 import { screens } from "../interfaces/dataInterface";
 import reducer from "./reducer";
 import axios from "axios";
-import { PostsToMyPosts } from "../helpers/sortList";
+import { PostsToMyPosts } from "../helpers/setPosts";
 
 interface ProviderProp {
   children: JSX.Element | JSX.Element[];
@@ -60,7 +60,7 @@ const AppProvider = ({ children }: ProviderProp) => {
   };
 
   const data: AppContext = {
-    state,
+    state, //el state del reducer lo pasamos como el state del contexto
     setSelected,
     getPosts,
   };
