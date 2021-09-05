@@ -17,11 +17,7 @@ const HomeScreen = () => {
   const { posts, selected } = state;
   const refList = useRef<FlatList<any>>(null); //si no le pongo null me sale warning de tipado
 
-  console.log(selected);
-
   useEffect(() => {
-    console.log("entro");
-
     getPosts(selected).then(() => {
       //cuando seleccionemos una nueva pantalla, si ibamos por la mitda
       //vuelve a emepzar desde arriba
