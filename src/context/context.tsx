@@ -42,10 +42,14 @@ const AppProvider = ({ children }: ProviderProp) => {
   const getPosts = async (name: screens) => {
     //hacemos el dispatch, lo que hace la funcion postToMyPosts es mapear todos los posts
     //y devolverlos con una interfaz que tiene los datos que realmente voy a usar luego
-    const postsFetched = await axios.get<Posts>(
-      `https://api.reddit.com/r/pics/${name.toLowerCase()}.json`
-    );
-    dispatch({ type: "getAll", payload: PostsToMyPosts(postsFetched.data) });
+    try {
+      const postsFetched = await axios.get<Posts>(
+        `https://api.reddit.com/r/pics/${name.toLowerCase()}.json`
+      );
+      dispatch({ type: "getAll", payload: PostsToMyPosts(postsFetched.data) });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const setSelected = (name: screens) => {

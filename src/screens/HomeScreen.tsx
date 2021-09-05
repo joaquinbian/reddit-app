@@ -1,10 +1,4 @@
-import React, {
-  MutableRefObject,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -25,6 +19,8 @@ const HomeScreen = () => {
 
   useEffect(() => {
     getPosts(selected).then(() => {
+      //cuando seleccionemos una nueva pantalla, si ibamos por la mitda
+      //vuelve a emepzar desde arriba
       refList.current?.scrollToIndex({ index: 0, animated: false });
     });
   }, [selected]);
