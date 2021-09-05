@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  MutableRefObject,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   StyleSheet,
   View,
@@ -15,9 +21,13 @@ const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { state, getPosts } = useContext(appContext);
   const { posts, selected } = state;
+  // const [listRef, setListRef] = useState({});
+  const refList = useRef<FlatList<any>>();
 
   useEffect(() => {
-    getPosts(selected);
+    getPosts(selected).then(() => {
+      refList.current?.scrollToIndex({ index: 0, animated: false });
+    });
   }, [selected]);
 
   const onRefresh = () => {
@@ -43,16 +53,16 @@ const HomeScreen = () => {
             horizontal
           />
           <FlatList
+            ref={refList}
             data={posts}
             renderItem={({ item }) => <PostCard post={item} />}
-            keyExtractor={(item) => item.created.toString()}
+            keyExtractor={(item, index) => `${item.title}+${index}`}
             ItemSeparatorComponent={() => <View style={{ marginBottom: 5 }} />}
             refreshing={isLoading}
             onRefresh={onRefresh}
             showsVerticalScrollIndicator={false}
-            ListFooterComponent={() => <View style={{ marginBottom: 35 }} />}
+            ListFooterComponent={() => <View style={{ marginBottom: 45 }} />}
             ListHeaderComponent={() => <View style={{ marginBottom: 5 }} />}
-            style={{ marginHorizontal: 5 }}
           />
         </View>
       )}

@@ -17,6 +17,7 @@ const PostCard = ({ post }: Props) => {
       onPress={() => {
         navigation.navigate("Url", { url: post.url });
       }}
+      style={{ marginHorizontal: 5 }}
     >
       <View style={{ flexDirection: "row" }}>
         <View>

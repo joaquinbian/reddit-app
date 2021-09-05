@@ -11,8 +11,22 @@ export type RootStackParams = {
 const StackNavigator = () => {
   const Stack = createStackNavigator<RootStackParams>();
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          shadowColor: "transparent", //para que no salga en ios
+          elevation: 0, //para que no salga la sombra del header en android
+          borderBottomColor: "rgba(0,0,0,.2)",
+          borderBottomWidth: 1,
+        },
+        headerTitleAlign: "center",
+      }}
+    >
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ title: "reddit/r/programing" }}
+      />
       <Stack.Screen name="Url" component={UrlScreen} />
     </Stack.Navigator>
   );
