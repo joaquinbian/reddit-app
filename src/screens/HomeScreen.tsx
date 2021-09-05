@@ -21,8 +21,7 @@ const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { state, getPosts } = useContext(appContext);
   const { posts, selected } = state;
-  // const [listRef, setListRef] = useState({});
-  const refList = useRef<FlatList<any>>();
+  const refList = useRef<FlatList<any>>(null); //si no le pongo null me sale warning de tipado
 
   useEffect(() => {
     getPosts(selected).then(() => {
