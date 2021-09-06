@@ -4,7 +4,7 @@ export const relativeDate = (time: number) => {
   const secondsPast = Date.now() / 1000 - seconds;
   const minutes = secondsPast / 60;
 
-  var result;
+  let result;
 
   if (secondsPast < 60) {
     result = Math.floor(secondsPast);
